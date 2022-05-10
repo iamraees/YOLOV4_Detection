@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<center><h1> Please select the directory of images for retraining </h1></center>
+<br>
+<br>
+{% if show==True %}
+<center>
+
+    {% if message=="healthy" %}
+    <h3><span class="badge badge-success">{{message}}</span></h3>
+    {%endif%}
+
+    {% if message=="pneumonic" %}
+    <h3><span class="badge badge-danger">{{message}}</span></h3>
+    {%endif%}
+    <br>
+    <br>
+
+    <a href="/" class="btn btn-info" role="button">Go Back</a>
+</center>
+{% else %}
+<center>
+    <form action="/retrain" method="POST" enctype="multipart/form-data">
+        <input type="file" webkitdirectory directory multiple/>
+        <button type="submit" class="btn btn-primary ml-3">Submit</button>
+    </form>
+    <br>
+    <br>
+    {{message}}
+</center>
+{% endif %}
+{% endblock%}
